@@ -36,11 +36,11 @@ path {
   overflow: hidden;
 } */
 
-#screenArea {
+/* #screenArea {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 #displayCard {
   display: flex;
@@ -55,16 +55,9 @@ path {
   z-index: 6;
 }
 
-#screenAreaDiv {
-  fill-opacity: 1;
-  background-color: greenyellow;
-  width: 100%;
-  height: 100%;
-}
-
-.screenArea {
-  /* fill-opacity: 0; */
-}
+/* .screenArea {
+  fill-opacity: 0;
+} */
 
 .card {
   fill-opacity: 1;
