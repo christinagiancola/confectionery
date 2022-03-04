@@ -1,4 +1,5 @@
-@import "../../node_modules/swiper/swiper-bundle.css";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 body {
   box-sizing: border-box;
@@ -6,6 +7,16 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.container {
+  height: 100%;
+}
+
+.slick-slide img {
+  height: 100%;
+  width: 100%;
+  margin: auto;
 }
 
 /* #mapContainer {
@@ -41,13 +52,13 @@ body {
   z-index: 5; */
 }
 
-#screenLeft {
+/* #screenLeft {
   z-index: 6;
 }
 
 #screenRight {
   z-index: 6;
-}
+} */
 
 .react-slideshow-container {
   /* width: 100%;

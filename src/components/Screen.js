@@ -35,6 +35,9 @@ const Screen = ({
     }
 
     if (showCards) {
+      if (currentClickId === "screenLeft" || currentClickId === "screenRight") {
+        setShowCards(true)
+      }
       if (currentClickType === "btn" || currentClickType === "bgArea") {
         setShowCards(false)
       }

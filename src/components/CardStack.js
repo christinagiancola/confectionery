@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react"
-import Swiper from "react-id-swiper"
+import Slider from "react-slick"
+// import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 
 const CardStack = ({ cards, currentClickId }) => {
+  console.log(cards)
   const imageUrls = cards.map(card => card.file.url)
   const contactCardIndex = cards.length - 1
   let cardArray = [
@@ -15,31 +17,19 @@ const CardStack = ({ cards, currentClickId }) => {
   console.log("<CardStack> imageUrls:", imageUrls)
   console.log("<CardStack> cardArray:", cardArray)
 
-  const params = {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-    },
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 300,
+    accessibility: true,
+    arrows: true,
+    autoplay: false,
+    centerMode: true,
+    centerPadding: 0,
+    draggable: true,
+    initialSlide: 0,
+    slidesToShow: 3,
   }
-
-  // useEffect(() => {
-  //   if (currentClickId === "screenLeft") {
-  //     goPrev()
-  //   }
-  //   if (currentClickId === "screenRight") {
-  //     goNext()
-  //   }
-  // }, [currentClickId])
 
   // const goNext = () => {
   //   if (ref.current !== null && ref.current.swiper !== null) {
@@ -60,50 +50,17 @@ const CardStack = ({ cards, currentClickId }) => {
   // }, [imageUrls])
 
   console.log("CardStack")
-  // const props = {
-  //   arrows: false,
-  //   autoplay: false,
-  //   easing: "ease-in",
-  //   transitionDuration: 500,
-  // }
-  // console.log("<CardStack> sliderRef.current:", sliderRef.current)
-
-  // const handleClick = () => {
-  //   // console.log("<CardStack> handleClick triggered")
-  //   if (sliderRef.current) {
-  //     if (currentClickId === "screenLeft") {
-  //       sliderRef.current.goBack()
-  //     }
-
-  //     if (currentClickId === "screenRight") {
-  //       sliderRef.current.goNext()
-  //     }
-
-  //     if (currentClickId === "btnContact") {
-  //       sliderRef.current.goTo(contactCardIndex)
-  //     }
-
-  //     if (currentClickId === "btnInfo") {
-  //       sliderRef.current.goTo(0)
-  //     }
-  //   }
-  // }
 
   return (
-    <Swiper {...params} id="displayCard" className="topCard">
-      <div>{cardArray[0]}</div>
-      <div>{cardArray[1]}</div>
-      <div>{cardArray[2]}</div>
-      <div>{cardArray[3]}</div>
-      <div>{cardArray[4]}</div>
-    </Swiper>
-    // <Carousel
-    //   id="displayCard"
-    //   className="topCard"
-    //   slides={cardArray}
-    //   autoplay={false}
-    //   arrows={false}
-    // />
+    <div className="container">
+      <Slider {...settings}>
+        {imageUrls.map((img, idx) => (
+          <div>
+            <img src={img} alt={idx} />
+          </div>
+        ))}
+      </Slider>
+    </div>
   )
 }
 
