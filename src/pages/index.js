@@ -15,6 +15,10 @@ export default function Home() {
         <script src="https://unpkg.com/image-map/dist/image-map.js"></script>
         <script src="https://unpkg.com/jquery/dist/jquery.js"></script>
         <script src="https://unpkg.com/image-map/dist/image-map.jquery.js"></script>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/css/swiper.min.css"
+        />
         {/* <script src="web-animations.min.js"></script> */}
         <link
           rel="stylesheet"
