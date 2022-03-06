@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useBgALightsOnOff } from "./imgs/useBgLights"
+import Screen from "../components/Screen"
 // import { useResizeObserver } from "@mantine/hooks"
 
 const TruffleImageMap = ({
-  setMapLoaded,
   lightsOn,
   setCurrentClick,
   arrowClickedStack,
+  cards,
+  videos,
+  currentClickId,
 }) => {
   const lights = useBgALightsOnOff()
   const bgImageLightsOn = lights.bg_a_lightsOn.file.url
@@ -22,16 +25,12 @@ const TruffleImageMap = ({
   }
 
   useEffect(() => {
-    setMapLoaded(true)
-  }, [])
-
-  useEffect(() => {
     const screenAreaRect = document.getElementById("screenArea")
     console.log(screenAreaRect.getBoundingClientRect())
   })
 
   return (
-    <div className="wrapper">
+    <div className="wrapper" id="svgWrapper">
       <svg
         viewBox="0 0 4096 2747"
         id="svg-image"
@@ -84,14 +83,20 @@ const TruffleImageMap = ({
           d="M1321.5 643.5H2418.5V1225.5H1321.5z"
           ref={screenAreaPath}
         ></path>
+        <foreignObject width="1097" height="582" x="1323" y="640">
+          <div
+            data-xmlns="http://www.w3.org/1999/xhtml"
+            className="react-slideshow-container"
+          >
+            <Screen
+              cards={cards}
+              videos={videos}
+              currentClickId={currentClickId}
+              arrowClickedStack={arrowClickedStack}
+            />
+          </div>
+        </foreignObject>
         {/* <path id="screenArea" x="0.5" y="0.5" width="1097" height="582" /> */}
-        {/* <image
-          href="https://images.ctfassets.net/jotoby554kx0/4bhIAoUyQeYysPWgIe5SCK/4c223a881085f01d75dd5c440bf6fde1/CARD01.jpg"
-          x="1320"
-          y="645"
-          height="582"
-          width="1097"
-        /> */}
         <path id="screenLeft" d="M1324.5 657.5H1807.5V1211.5H1324.5z" />
         <path id="screenRight" d="M1935.5 657.5H2418.5V1211.5H1935.5z" />
         <path id="leftArrow" d="M2419.5 1360.5H2639.5V1486.5H2419.5z" />

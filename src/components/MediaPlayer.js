@@ -62,8 +62,8 @@ const MediaPlayer = ({
     <ReactPlayer
       className="react-player"
       url={currentVideoArray[currentVideoIndex].embeddedUrl}
-      height="95%"
-      width="95%"
+      height="100%"
+      width="100%"
       playing // Sets autoplay on click
       controls={false}
       onEnded={getNextVideo}

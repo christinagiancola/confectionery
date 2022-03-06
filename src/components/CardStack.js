@@ -1,11 +1,45 @@
-import React, { useEffect, useRef } from "react"
+import React, { useState } from "react"
+import Slider from "react-slick"
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 
 const CardStack = ({ cards, showCards, currentClickId }) => {
   const imageUrls = cards.map(card => card.file.url)
-  const infoCard = cards[0]
-  const contactCard = cards.length - 1
+  // const infoCard = cards[0]
+  // const contactCard = cards.length - 1
 
-  // let slides = [
+  const NextArrow = ({ onClick }) => {
+    return (
+      <div className="arrow next" onClick={onClick}>
+        <FaArrowRight />
+      </div>
+    )
+  }
+
+  const PrevArrow = ({ onClick }) => {
+    return (
+      <div className="arrow prev" onClick={onClick}>
+        <FaArrowLeft />
+      </div>
+    )
+  }
+
+  const [imgIndex, setImgIndex] = useState(0)
+
+  const settings = {
+    infinite: true,
+    arrows: true,
+    speed: 300,
+    slidesToShow: 3,
+    centerMode: true,
+    centerPadding: 0,
+    draggable: true,
+    // swipeToSlide: true,
+    nextArrow: <NextArrow />, //imported from 'react-icons'
+    prevArrow: <PrevArrow />, //imported from 'react-icons'
+    beforeChange: (current, next) => setImgIndex(next),
+  }
+
+  // let cardArray = [
   //   <img
   //     className="card"
   //     src="https://images.ctfassets.net/jotoby554kx0/4bhIAoUyQeYysPWgIe5SCK/4c223a881085f01d75dd5c440bf6fde1/CARD01.jpg"
@@ -33,7 +67,17 @@ const CardStack = ({ cards, showCards, currentClickId }) => {
   //   />,
   // ]
 
-  return <img className="card" src={infoCard} alt="1" />
+  return (
+    <Slider {...settings}>
+      {imageUrls.map((img, idx) => (
+        <div key={idx}>
+          <div className={idx === imgIndex ? "slide activeSlide" : "slide"}>
+            <img className="card" src={img} alt={idx} key={idx}></img>
+          </div>
+        </div>
+      ))}
+    </Slider>
+  )
 }
 
 export default CardStack

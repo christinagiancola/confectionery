@@ -32,8 +32,11 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
     "react-id-swiper": "^4.0.0",
     "react-player": "^2.9.0",
+    "react-slick": "^0.28.1",
+    "react-slick-carousel": "^0.14.9",
     "react-slideshow-image": "^3.7.0",
     "start": "^5.1.0",
     "swiper": "^8.0.6"
