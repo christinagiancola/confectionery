@@ -9,7 +9,6 @@ const CardStack = ({ cards, showCards, currentClickId }) => {
   const imageUrls = cards.map(card => card.file.url)
 
   const handleSlideClick = (e, index) => {
-    e.preventDefault()
     setGoToSlide(index)
   }
   // const infoCard = cards[0]
@@ -36,8 +35,8 @@ const CardStack = ({ cards, showCards, currentClickId }) => {
     return { ...slide }
   })
 
-  console.log(imageUrls)
-  console.log(slides)
+  console.log("imageUrls:", imageUrls)
+  console.log("slides:", slides)
 
   // const NextArrow = ({ onClick }) => {
   //   return (
