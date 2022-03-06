@@ -68,15 +68,17 @@ const CardStack = ({ cards, showCards, currentClickId }) => {
   // ]
 
   return (
-    <Slider {...settings}>
-      {imageUrls.map((img, idx) => (
-        <div key={idx}>
-          <div className={idx === imgIndex ? "slide activeSlide" : "slide"}>
-            <img className="card" src={img} alt={idx} key={idx}></img>
+    <div>
+      <Slider {...settings}>
+        {imageUrls.map((img, idx) => (
+          <div key={idx}>
+            <div className={idx === imgIndex ? "slide activeSlide" : "slide"}>
+              <img className="card" src={img} alt={idx} key={idx}></img>
+            </div>
           </div>
-        </div>
-      ))}
-    </Slider>
+        ))}
+      </Slider>
+    </div>
   )
 }
 
