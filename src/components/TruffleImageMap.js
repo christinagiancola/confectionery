@@ -79,7 +79,7 @@ const TruffleImageMap = ({
         <path id="btn1" d="M1393.5 1598.5H1582.5V1725.5H1393.5z" />
         <path
           id="screenArea"
-          stroke="red"
+          // stroke="red"
           d="M1321.5 643.5H2418.5V1225.5H1321.5z"
           ref={screenAreaPath}
         ></path>
