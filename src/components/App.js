@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import reactDom from "react-dom"
-import Screen from "../components/Screen"
 import { useCards } from "../components/imgs/useCards"
 import "normalize.css"
 import "../styling/main.css"

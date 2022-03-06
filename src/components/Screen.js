@@ -17,7 +17,6 @@ const Screen = ({ cards, videos, currentClickId, arrowClickedStack }) => {
   })
   const prevClickId = usePrevious(currentClickId)
   const { playVideo } = videoDetails
-  const imageUrls = cards.map(card => card.file.url)
 
   const showCardBtns = ["infoBtn", "contactBtn"]
   const hideCardBtns = [
@@ -88,7 +87,6 @@ const Screen = ({ cards, videos, currentClickId, arrowClickedStack }) => {
       {showCards ? (
         <CardStack
           cards={cards}
-          imageUrls={imageUrls}
           showCards={showCards}
           currentClickId={currentClickId}
         />

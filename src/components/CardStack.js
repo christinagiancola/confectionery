@@ -1,42 +1,75 @@
-import React, { useState } from "react"
-import Slider from "react-slick"
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
+import React, { useState, useEffect } from "react"
+import Carousel from "react-spring-3d-carousel-2"
 
-const CardStack = ({ cards, imageUrls, showCards, currentClickId }) => {
+// import Slider from "react-slick"
+// import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
+
+const CardStack = ({ cards, showCards, currentClickId }) => {
+  const [goToSlide, setGoToSlide] = useState(0)
+  const imageUrls = cards.map(card => card.file.url)
+
+  const handleSlideClick = (e, index) => {
+    e.preventDefault()
+    setGoToSlide(index)
+  }
   // const infoCard = cards[0]
   // const contactCard = cards.length - 1
-
-  const NextArrow = ({ onClick }) => {
-    return (
-      <div className="arrow next" onClick={onClick}>
-        <FaArrowRight />
-      </div>
-    )
-  }
-
-  const PrevArrow = ({ onClick }) => {
-    return (
-      <div className="arrow prev" onClick={onClick}>
-        <FaArrowLeft />
-      </div>
-    )
-  }
-
-  const [imgIndex, setImgIndex] = useState(0)
-
   const settings = {
-    infinite: true,
-    arrows: true,
-    speed: 300,
-    slidesToShow: 3,
-    centerMode: true,
-    centerPadding: 0,
-    draggable: true,
-    // swipeToSlide: true,
-    nextArrow: <NextArrow />, //imported from 'react-icons'
-    prevArrow: <PrevArrow />, //imported from 'react-icons'
-    beforeChange: (current, next) => setImgIndex(next),
+    goToSlide: { goToSlide },
+    offsetRadius: 2,
+    showNavigation: true,
   }
+
+  const slidesArray = imageUrls.map((img, idx) => ({
+    key: Math.random(),
+    content: (
+      <img
+        className="card"
+        src={img}
+        alt={idx}
+        onClick={(e, idx) => handleSlideClick(e, idx)}
+      />
+    ),
+  }))
+
+  const slides = slidesArray.map((slide, index) => {
+    return { ...slide }
+  })
+
+  console.log(imageUrls)
+  console.log(slides)
+
+  // const NextArrow = ({ onClick }) => {
+  //   return (
+  //     <div className="arrow next" onClick={onClick}>
+  //       <FaArrowRight />
+  //     </div>
+  //   )
+  // }
+
+  // const PrevArrow = ({ onClick }) => {
+  //   return (
+  //     <div className="arrow prev" onClick={onClick}>
+  //       <FaArrowLeft />
+  //     </div>
+  //   )
+  // }
+
+  // const [imgIndex, setImgIndex] = useState(0)
+
+  // const settings = {
+  //   infinite: true,
+  //   arrows: true,
+  //   speed: 300,
+  //   slidesToShow: 3,
+  //   centerMode: true,
+  //   centerPadding: 0,
+  //   draggable: true,
+  //   // swipeToSlide: true,
+  //   nextArrow: <NextArrow />, //imported from 'react-icons'
+  //   prevArrow: <PrevArrow />, //imported from 'react-icons'
+  //   beforeChange: (current, next) => setImgIndex(next),
+  // }
 
   // let cardArray = [
   //   <img
@@ -68,7 +101,13 @@ const CardStack = ({ cards, imageUrls, showCards, currentClickId }) => {
 
   return (
     <div>
-      <Slider {...settings}>
+      <Carousel
+        slides={slides}
+        {...settings}
+        className="spring-carousel"
+        id="displayCard"
+      />
+      {/* <Slider {...settings}>
         {imageUrls.map((img, idx) => (
           <div key={idx}>
             <div className={idx === imgIndex ? "slide activeSlide" : "slide"}>
@@ -76,7 +115,7 @@ const CardStack = ({ cards, imageUrls, showCards, currentClickId }) => {
             </div>
           </div>
         ))}
-      </Slider>
+      </Slider> */}
     </div>
   )
 }

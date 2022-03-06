@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React from "react"
 import { useBgALightsOnOff } from "./imgs/useBgLights"
 import Screen from "../components/Screen"
 // import { useResizeObserver } from "@mantine/hooks"
@@ -14,8 +14,6 @@ const TruffleImageMap = ({
   const lights = useBgALightsOnOff()
   const bgImageLightsOn = lights.bg_a_lightsOn.file.url
   const bgImageLightsOff = lights.bg_a_lightsOff.file.url
-  const screenAreaPath = useRef(null)
-  // const [ref, rect] = useResizeObserver()
 
   const handleClick = e => {
     setCurrentClick([e.target.id])
@@ -24,10 +22,9 @@ const TruffleImageMap = ({
     }
   }
 
-  useEffect(() => {
-    const screenAreaRect = document.getElementById("screenArea")
-    console.log(screenAreaRect.getBoundingClientRect())
-  })
+  const handleBtn8Click = () => {
+    window.open("https://www.cine.doctor/")
+  }
 
   return (
     <div className="wrapper" id="svgWrapper">
@@ -69,7 +66,11 @@ const TruffleImageMap = ({
         <path id="btn11" d="M1594.5 1367.5H1782.5V1479.5H1594.5z" />
         <path id="btn10" d="M2153.5 1481.5H2342.5V1596.5H2153.5z" />
         <path id="btn9" d="M1963.5 1481.5H2152.5V1596.5H1963.5z" />
-        <path id="btn8" d="M1773.5 1481.5H1962.5V1596.5H1773.5z" />
+        <path
+          id="btn8"
+          d="M1773.5 1481.5H1962.5V1596.5H1773.5z"
+          onClick={() => handleBtn8Click()}
+        />
         <path id="btn7" d="M1590.5 1480.5H1772.5V1595.5H1590.5z" />
         <path id="btn6" d="M1399.5 1481.5H1589.5V1596.5H1399.5z" />
         <path id="btn5" d="M2153.5 1598.5H2342.5V1725.5H2153.5z" />
@@ -81,7 +82,6 @@ const TruffleImageMap = ({
           id="screenArea"
           // stroke="red"
           d="M1321.5 643.5H2418.5V1225.5H1321.5z"
-          ref={screenAreaPath}
         ></path>
         <foreignObject width="1097" height="582" x="1323" y="640">
           <div
