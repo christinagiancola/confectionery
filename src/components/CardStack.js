@@ -2,8 +2,7 @@ import React, { useState } from "react"
 import Slider from "react-slick"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 
-const CardStack = ({ cards, showCards, currentClickId }) => {
-  const imageUrls = cards.map(card => card.file.url)
+const CardStack = ({ cards, imageUrls, showCards, currentClickId }) => {
   // const infoCard = cards[0]
   // const contactCard = cards.length - 1
 
