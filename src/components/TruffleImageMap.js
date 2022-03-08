@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { useBgALightsOnOff } from "./imgs/useBgLights"
-// import { useResizeObserver } from "@mantine/hooks"
+import Screen from "../components/Screen"
 
 const TruffleImageMap = ({
-  setMapLoaded,
   lightsOn,
   setCurrentClick,
   arrowClickedStack,
+  cards,
+  videos,
+  currentClickId,
 }) => {
   const lights = useBgALightsOnOff()
   const bgImageLightsOn = lights.bg_a_lightsOn.file.url
   const bgImageLightsOff = lights.bg_a_lightsOff.file.url
-  // const [ref, rect] = useResizeObserver()
 
   const handleClick = e => {
     setCurrentClick([e.target.id])
@@ -20,16 +21,12 @@ const TruffleImageMap = ({
     }
   }
 
-  useEffect(() => {
-    setMapLoaded(true)
-  }, [])
-
-  // useEffect(() => {
-  //   console.log(rect)
-  // })
+  const handleBtn8Click = () => {
+    window.open("https://www.cine.doctor/")
+  }
 
   return (
-    <div className="wrapper">
+    <div className="wrapper" id="svgWrapper">
       <svg
         viewBox="0 0 4096 2747"
         id="svg-image"
@@ -68,7 +65,11 @@ const TruffleImageMap = ({
         <path id="btn11" d="M1594.5 1367.5H1782.5V1479.5H1594.5z" />
         <path id="btn10" d="M2153.5 1481.5H2342.5V1596.5H2153.5z" />
         <path id="btn9" d="M1963.5 1481.5H2152.5V1596.5H1963.5z" />
-        <path id="btn8" d="M1773.5 1481.5H1962.5V1596.5H1773.5z" />
+        <path
+          id="btn8"
+          d="M1773.5 1481.5H1962.5V1596.5H1773.5z"
+          onClick={() => handleBtn8Click()}
+        />
         <path id="btn7" d="M1590.5 1480.5H1772.5V1595.5H1590.5z" />
         <path id="btn6" d="M1399.5 1481.5H1589.5V1596.5H1399.5z" />
         <path id="btn5" d="M2153.5 1598.5H2342.5V1725.5H2153.5z" />
@@ -76,15 +77,20 @@ const TruffleImageMap = ({
         <path id="btn3" d="M1773.5 1598.5H1962.5V1725.5H1773.5z" />
         <path id="btn2" d="M1583.5 1598.5H1772.5V1725.5H1583.5z" />
         <path id="btn1" d="M1393.5 1598.5H1582.5V1725.5H1393.5z" />
-        <path id="screenArea" x="0.5" y="0.5" width="1097" height="582" />
-        <image
-          href="https://images.ctfassets.net/jotoby554kx0/4bhIAoUyQeYysPWgIe5SCK/4c223a881085f01d75dd5c440bf6fde1/CARD01.jpg"
-          x="1320"
-          y="645"
-          height="582"
-          width="1097"
-          // ref={ref}
-        />
+        <path id="screenArea" d="M1321.5 643.5H2418.5V1225.5H1321.5z"></path>
+        <foreignObject width="1097" height="582" x="1323" y="640">
+          <div
+            data-xmlns="http://www.w3.org/1999/xhtml"
+            className="react-slideshow-container"
+          >
+            <Screen
+              cards={cards}
+              videos={videos}
+              currentClickId={currentClickId}
+              arrowClickedStack={arrowClickedStack}
+            />
+          </div>
+        </foreignObject>
         <path id="screenLeft" d="M1324.5 657.5H1807.5V1211.5H1324.5z" />
         <path id="screenRight" d="M1935.5 657.5H2418.5V1211.5H1935.5z" />
         <path id="leftArrow" d="M2419.5 1360.5H2639.5V1486.5H2419.5z" />

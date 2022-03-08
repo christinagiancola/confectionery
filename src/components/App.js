@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import reactDom from "react-dom"
-import Screen from "../components/Screen"
 import { useCards } from "../components/imgs/useCards"
 import "normalize.css"
 import "../styling/main.css"
@@ -11,7 +9,6 @@ import { useVideos } from "../components/imgs/useVideos"
 const TruffleImageMap = loadable(() => import("../components/TruffleImageMap"))
 
 export default function App({ arrowClickedStack }) {
-  const [mapLoaded, setMapLoaded] = useState(false)
   const [lightsOn, setLightsOn] = useState(true)
   const [currentClick, setCurrentClick] = useState([""])
   const cards = useCards()
@@ -46,33 +43,20 @@ export default function App({ arrowClickedStack }) {
 
   useEffect(() => {
     if (currentClickId) {
-      console.log("<App> useEffect triggered: toggleLights()")
       toggleLights()
     }
   }, [currentClick])
-
-  useEffect(() => {
-    if (mapLoaded) {
-      var screenArea = document.getElementById("screenArea")
-      const screen = (
-        <Screen
-          cards={cards}
-          videos={videos}
-          currentClickId={currentClickId}
-          arrowClickedStack={arrowClickedStack}
-        />
-      )
-      reactDom.render(screen, screenArea)
-    }
-  })
 
   return (
     <div id="mapContainer">
       <TruffleImageMap
         id="truffleImageMap"
-        setMapLoaded={setMapLoaded}
         lightsOn={lightsOn}
         setCurrentClick={setCurrentClick}
+        arrowClickedStack={arrowClickedStack}
+        cards={cards}
+        videos={videos}
+        currentClickId={currentClickId}
         arrowClickedStack={arrowClickedStack}
       />
     </div>
